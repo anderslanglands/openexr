@@ -3,6 +3,13 @@ compiler:
   - gcc
   - clang
 
+addons:
+  apt:
+    sources:
+      - sourceline: 'ppa:rakhimov/boost'
+  packages:
+    boost1.61
+
 script:
   - cd IlmBase
   - mkdir build
@@ -11,3 +18,7 @@ script:
   - make install
   - ctest
   - cd ../..
+  - cd OpenEXR
+  - mkdir build
+  - cd build
+  - cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/pacakges/openexr -DCMAKE_PREFIX_PATH=$HOME/packages/ilmbase/cmake

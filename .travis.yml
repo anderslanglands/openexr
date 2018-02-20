@@ -25,3 +25,10 @@ script:
   - mkdir build
   - cd build
   - cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/pacakges/openexr -DCMAKE_PREFIX_PATH=$HOME/packages/ilmbase/cmake
+  - make install
+  - ctest
+  - cd ../..
+  - cd PyIlmBase
+  - mkdir build
+  - cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/pacakges/pyilmbase -DCMAKE_PREFIX_PATH=$HOME/packages/ilmbase/cmake
+  - make install

@@ -1,0 +1,13 @@
+language: cpp
+compiler:
+  - gcc
+  - clang
+
+script:
+  - cd IlmBase
+  - mkdir build
+  - cd build
+  - cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/packages/ilmbase
+  - make install
+  - ctest
+  - cd ../..

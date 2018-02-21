@@ -13,4 +13,5 @@ libtool
 ltmain.sh
 missing
 .metadata/
+build
 

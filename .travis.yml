@@ -29,5 +29,6 @@ script:
   - cd ../..
   - cd PyIlmBase
   - mkdir build
+  - cd build
   - cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/pacakges/pyilmbase -DCMAKE_PREFIX_PATH=$HOME/packages/ilmbase/cmake
   - make install

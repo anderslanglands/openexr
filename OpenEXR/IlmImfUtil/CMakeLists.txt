@@ -27,10 +27,10 @@ ADD_LIBRARY ( IlmImfUtil ${LIB_TYPE}
 )
 
 TARGET_LINK_LIBRARIES ( IlmImfUtil 
-  Half 
-  Iex${ILMBASE_LIBSUFFIX}
-  Imath${ILMBASE_LIBSUFFIX}
-  IlmThread${ILMBASE_LIBSUFFIX}
+  IlmBase::Imath
+  IlmBase::IlmThread
+  IlmBase::Iex
+  IlmBase::Half
   IlmImf
   ${PTHREAD_LIB} ${ZLIB_LIBRARIES}
 )
@@ -41,8 +41,20 @@ TARGET_LINK_LIBRARIES ( IlmImfUtil
 INSTALL ( TARGETS
   IlmImfUtil
   DESTINATION
-  ${CMAKE_INSTALL_PREFIX}/lib
+  lib
+  EXPORT
+  openexr-config
 )
+
+TARGET_INCLUDE_DIRECTORIES ( IlmImf PUBLIC
+  $<INSTALL_INTERFACE:include>
+  )
+
+INSTALL ( EXPORT
+  openexr-config
+  NAMESPACE OpenEXR::
+  DESTINATION cmake
+  )
 
 # Headers
 INSTALL ( FILES

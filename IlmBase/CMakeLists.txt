@@ -229,3 +229,7 @@ INSTALL ( FILES
   DESTINATION
   lib/pkgconfig
 )
+
+# CMake version config
+CONFIGURE_FILE ( ${CMAKE_SOURCE_DIR}/cmake/ilmbase-config-version.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/ilmbase-config-version.cmake @ONLY )
+INSTALL ( FILES ${CMAKE_CURRENT_BINARY_DIR}/ilmbase-config-version.cmake DESTINATION ${CMAKE_INSTALL_PREFIX}/cmake )

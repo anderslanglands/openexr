@@ -46,7 +46,21 @@ INSTALL ( TARGETS
   Half
   DESTINATION
   lib
-)
+  EXPORT
+  ilmbase-config
+  )
+
+TARGET_INCLUDE_DIRECTORIES ( Half PUBLIC
+  $<INSTALL_INTERFACE:include>
+  # Horrible hack to get OpenEXR to build correctly
+  $<INSTALL_INTERFACE:include/OpenEXR>
+  )
+
+INSTALL ( EXPORT
+  ilmbase-config
+  NAMESPACE IlmBase::
+  DESTINATION cmake
+  )
 
 INSTALL ( FILES 
   half.h

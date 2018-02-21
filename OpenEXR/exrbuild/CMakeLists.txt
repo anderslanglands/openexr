@@ -6,9 +6,9 @@ ADD_EXECUTABLE ( exrbuild
 
 TARGET_LINK_LIBRARIES ( exrbuild
   IlmImf
-  IlmThread${ILMBASE_LIBSUFFIX}
-  Iex${ILMBASE_LIBSUFFIX}
-  Half
+  IlmBase::IlmThread
+  IlmBase::Iex
+  IlmBase::Half
   ${PTHREAD_LIB}
   ${ZLIB_LIBRARIES}
 )

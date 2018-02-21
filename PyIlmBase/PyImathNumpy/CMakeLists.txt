@@ -14,9 +14,6 @@ INCLUDE_DIRECTORIES (
 TARGET_LINK_LIBRARIES ( imathnumpymodule
 	PyImath
 	PyIex
-	Imath${ILMBASE_LIBSUFFIX}
-	Iex${ILMBASE_LIBSUFFIX}
-	${Boost_LIBRARIES}
 )
 
 INSTALL ( TARGETS imathnumpymodule

@@ -7,9 +7,9 @@ ADD_EXECUTABLE ( b44ExpLogTable
 )
 
 TARGET_LINK_LIBRARIES ( b44ExpLogTable
-  Half
-  IlmThread${ILMBASE_LIBSUFFIX}
-  Iex${ILMBASE_LIBSUFFIX}
+  IlmBase::IlmThread
+  IlmBase::Iex
+  IlmBase::Half
   ${PTHREAD_LIB}
 )
 
@@ -24,9 +24,9 @@ ADD_EXECUTABLE ( dwaLookups
 )
 
 TARGET_LINK_LIBRARIES ( dwaLookups
-  Half
-  IlmThread${ILMBASE_LIBSUFFIX}
-  Iex${ILMBASE_LIBSUFFIX}
+  IlmBase::IlmThread
+  IlmBase::Iex
+  IlmBase::Half
   ${PTHREAD_LIB}
 )
 
@@ -137,10 +137,10 @@ ADD_LIBRARY ( IlmImf ${LIB_TYPE}
 )
 
 TARGET_LINK_LIBRARIES ( IlmImf 
-  Half 
-  Iex${ILMBASE_LIBSUFFIX}
-  Imath${ILMBASE_LIBSUFFIX}
-  IlmThread${ILMBASE_LIBSUFFIX}
+  IlmBase::Imath
+  IlmBase::IlmThread
+  IlmBase::Iex
+  IlmBase::Half
   ${PTHREAD_LIB} ${ZLIB_LIBRARIES}
 )
 
@@ -168,7 +168,19 @@ INSTALL ( TARGETS
   IlmImf
   DESTINATION
   ${CMAKE_INSTALL_PREFIX}/lib
+  EXPORT
+  openexr-config
 )
+
+TARGET_INCLUDE_DIRECTORIES ( IlmImf PUBLIC
+  $<INSTALL_INTERFACE:include>
+  )
+
+INSTALL ( EXPORT
+  openexr-config
+  NAMESPACE OpenEXR::
+  DESTINATION cmake
+  )
 
 # Headers
 INSTALL ( FILES

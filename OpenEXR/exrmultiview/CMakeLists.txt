@@ -8,10 +8,10 @@ ADD_EXECUTABLE ( exrmultiview
 
 TARGET_LINK_LIBRARIES ( exrmultiview
   IlmImf
-  Half
-  Imath${ILMBASE_LIBSUFFIX}
-  Iex${ILMBASE_LIBSUFFIX}
-  IlmThread${ILMBASE_LIBSUFFIX}
+  IlmBase::Imath
+  IlmBase::IlmThread
+  IlmBase::Iex
+  IlmBase::Half
   ${PTHREAD_LIB}
   ${ZLIB_LIBRARIES}
 )
